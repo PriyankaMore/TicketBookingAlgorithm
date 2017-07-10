@@ -5,14 +5,18 @@ import java.util.List;
 import com.walmart.ticketbooking.model.HoldResponse;
 import com.walmart.ticketbooking.model.Seat;
 
-
+/**
+ * 
+ * @author Priyanka
+ * @Created on 7/7/2017
+ */
 public interface SeatsService {
-	
-	public String showSeats();
+
+	public boolean bookSeatsForCustomer(String refId);
 	public List<Seat> buildSeats(int rows, int columns);		
-	public HoldResponse holdSeatsForCustomer(int nosOfSeats);
-	public boolean bookSeatsForCustomer(String refId) throws Exception;
 	public int getAvailableSeats();
-	
-	
+	public HoldResponse holdSeatsForCustomer(int nosOfSeats);
+	public String showSeats();
+
+
 }

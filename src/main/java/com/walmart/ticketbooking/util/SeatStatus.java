@@ -1,4 +1,10 @@
 package com.walmart.ticketbooking.util;
+/**
+ * 
+ * @author Priyanka
+ * This enum contains list of status a seat can have
+ *
+ */
 
 public enum SeatStatus {
 	AVAILABLE('A'), HOLD('H'), BOOKED('B');
