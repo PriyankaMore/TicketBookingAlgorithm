@@ -22,7 +22,6 @@ No Database is used, hence Collections work as repository for storing informatio
 git clone https://github.com/PriyankaMore/TicketBookingAlgorithm.git
 cd TicketBookingAlgoithm
 ./run_ticket_booking.sh
-* 
 ```
 * In case the script errors out, please execute each step in the script manually
 * The script will run the project, generate venue, hold bookings and provide you with a URL to confirm booking.
