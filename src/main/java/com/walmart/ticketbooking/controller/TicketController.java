@@ -26,18 +26,24 @@ public class TicketController {
 
 	/**
 	 * 
-	 * @param refId - holdRefId is used to book the held seats
-	 * @return String - Seating arrangements in form of String
-	 * 
+	 * @param refId 
+	 * 		 holdRefId is used to book the held seats
+	 * @return String 
+	 * 		 Seating arrangements in form of String
+	 * @throws Exception 
+	 * 		 To check if reference id is not null
 	 */
 	@RequestMapping("/bookSeats/{refId}")
-	public String bookSeats(@PathVariable("refId") String refId) {
-		boolean booked = seatService.bookSeatsForCustomer(refId);
-		if (booked) {
-			return seatService.showSeats() + "\n Seats successfully booked";
-		} else {
-			return "Either your booking has expired or the refId does not exist";
-		}
+	public String bookSeats(@PathVariable("refId") String refId) throws Exception {
+		if(refId !=null){
+			boolean booked = seatService.bookSeatsForCustomer(refId);
+			if (booked) {
+				return seatService.showSeats() + "\n Seats successfully booked";
+			} else {
+				return "Either your booking has expired or the refId does not exist";
+			}
+		}else
+			throw new Exception("Enter Reference number");
 	}
 
 	/**
@@ -57,11 +63,16 @@ public class TicketController {
 	 * 		This parameter represents number of columns in the Venue
 	 * @return String
 	 * 		The function returns Seating arrangements in form of String
+	 * @throws Exception 
+	 * 		To check rows & columns are always greater than 0
 	 */
 	@RequestMapping("/generate/{rows}/{columns}")
-	public String generate(@PathVariable("rows") int rows, @PathVariable("columns") int columns) {
-		seatService.buildSeats(rows, columns);
-		return seatService.showSeats();
+	public String generate(@PathVariable("rows") int rows, @PathVariable("columns") int columns) throws Exception {
+		if(rows>0 && columns >0){
+			seatService.buildSeats(rows, columns);
+			return seatService.showSeats();
+		}else
+			throw new Exception("Enter Valid rows and Columns");
 	}
 
 	/**
@@ -82,10 +93,15 @@ public class TicketController {
 	 * @return String
 	 * 		The function returns Seating arrangements in form of String &
 	 * 		Return the holdRefId after holding the seats 		
+	 * @throws Exception 
+	 * 		To check number of seats are always greater than 0
 	 */
 	@RequestMapping("/holdSeats/{nosOfSeats}")
-	public String holdSeats(@PathVariable("nosOfSeats") int nosOfSeats) {
-		return seatService.holdSeatsForCustomer(nosOfSeats).toString();
+	public String holdSeats(@PathVariable("nosOfSeats") int nosOfSeats) throws Exception {
+		if(nosOfSeats > 0)
+			return seatService.holdSeatsForCustomer(nosOfSeats).toString();
+		else
+			throw new Exception("Number of Seats shoould be greater than 0");
 	}
 
 }

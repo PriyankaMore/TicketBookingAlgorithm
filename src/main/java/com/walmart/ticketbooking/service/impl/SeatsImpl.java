@@ -72,7 +72,7 @@ public class SeatsImpl implements SeatsService{
 	 */
 	@Override
 	public HoldResponse holdSeatsForCustomer(int nosOfSeats) {
-
+		
 		String refId = seatutil.holdSeatsForCustomer(nosOfSeats);
 		HoldResponse response = new HoldResponse();
 		response.setVenue(seatutil.showSeats());
