@@ -32,8 +32,7 @@ cd TicketBookingAlgoithm
 ----------------------------------------------------------------------------------------------------------------------------------------
 ## RESTful web services
 
-* These rest services if tested through browser, then the image representation of seating arrangement can be seen
-* If rest services are tested through command prompt, then the response will be in form of raw html 
+* These rest services if tested through browser, then the image representation of seating arrangement can be seen 
 
 * Build the venue by providing number of rows and number of columns
 
@@ -68,7 +67,19 @@ cd TicketBookingAlgoithm
   ```
   ![Image of DisplaySeats](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/displaySeats.PNG)
   -------------------------------------------------------------------------------------------------------------------------------------
-  ## Testing Result
+  ## Flow Chart
+  
+  * Overview of Algorithm
+  
+  ![Image of Overview](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/TicketBookingOverview.PNG)
+  
+  * Hold Process
+  
+  ![Image of Overview](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/holdSeatsFlowchart.PNG)
+  
+  * Thread Scheduling 
+  
+  ![Image of Overview](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/ThreadOperation.PNG)
   
   
   
