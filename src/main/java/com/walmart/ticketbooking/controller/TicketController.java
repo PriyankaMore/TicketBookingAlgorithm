@@ -26,24 +26,30 @@ public class TicketController {
 
 	/**
 	 * 
-	 * @param refId 
-	 * 		 holdRefId is used to book the held seats
-	 * @return String 
-	 * 		 Seating arrangements in form of String
-	 * @throws Exception 
-	 * 		 To check if reference id is not null
+	 * @param refId
+	 *            holdRefId is used to book the held seats
+	 * @return String Seating arrangements in form of String
+	 * @throws Exception
+	 *             To check if reference id is not null
 	 */
 	@RequestMapping("/bookSeats/{refId}")
-	public String bookSeats(@PathVariable("refId") String refId) throws Exception {
-		if(refId !=null){
-			boolean booked = seatService.bookSeatsForCustomer(refId);
-			if (booked) {
-				return seatService.showSeats() + "\n Seats successfully booked";
-			} else {
-				return "Either your booking has expired or the refId does not exist";
-			}
-		}else
-			throw new Exception("Enter Reference number");
+	public String bookSeats(@PathVariable("refId") String refId) {
+		try{
+			if (refId != null) {
+				boolean booked = seatService.bookSeatsForCustomer(refId);
+				if (booked) {
+					return seatService.showSeats() + "\n Seats successfully booked";
+				} else {
+					return "Either your booking has expired or the refId does not exist";
+				}
+			} else
+				throw new Exception("Enter Reference number");
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Cannot Book Seats at this time, please try again later. Cause : "+e );
+		}
+		return "Cannot Book Seats at this time, please try again later";
+		
 	}
 
 	/**
@@ -52,7 +58,14 @@ public class TicketController {
 	 */
 	@RequestMapping("/display")
 	public String display() {
-		return seatService.showSeats();
+		try{
+			return seatService.showSeats();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Cannot display venue at this time, please try again later. Cause : "+e);
+		}
+		return "Cannot display venue at this time, please try again later";
+		
 	}
 
 	/**
@@ -64,44 +77,61 @@ public class TicketController {
 	 * @return String
 	 * 		The function returns Seating arrangements in form of String
 	 * @throws Exception 
-	 * 		To check rows & columns are always greater than 0
+	 * 		Toa check rows & columns are always greater than 0
 	 */
 	@RequestMapping("/generate/{rows}/{columns}")
-	public String generate(@PathVariable("rows") int rows, @PathVariable("columns") int columns) throws Exception {
-		if(rows>0 && columns >0){
-			seatService.buildSeats(rows, columns);
-			return seatService.showSeats();
-		}else
-			throw new Exception("Enter Valid rows and Columns");
+	public String generate(@PathVariable("rows") int rows, @PathVariable("columns") int columns) {
+		try{
+			if(rows>0 && columns >0){
+				seatService.buildSeats(rows, columns);
+				return seatService.showSeats();
+			}else
+				throw new Exception("Enter Valid rows and Columns");
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Cannot generate venue at this time, please try again later. Cause : "+e);
+		}
+		return "Cannot generate venue at this time, please try again later";
 	}
 
 	/**
 	 * 
-	 * @return String 
-	 * 		The function returns Seating arrangements in form of String &
-	 * 		Number of seats available
+	 * @return String The function returns Seating arrangements in form of
+	 *         String & Number of seats available
 	 */
 	@RequestMapping("/getAllSeats")
 	public String getAvailableSeats() {
-		return seatService.showSeats() + "\n" + seatService.getAvailableSeats();
+		try{
+			return seatService.showSeats() + "\n" + seatService.getAvailableSeats();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Cannot display venue at this time, please try again later. Cause : "+e);
+		}
+		return "Cannot display venue at this time, please try again laters";
 	}
 
 	/**
 	 * 
 	 * @param noOfSeats
-	 * 		Total Number of seats to be held
-	 * @return String
-	 * 		The function returns Seating arrangements in form of String &
-	 * 		Return the holdRefId after holding the seats 		
-	 * @throws Exception 
-	 * 		To check number of seats are always greater than 0
+	 *            Total Number of seats to be held
+	 * @return String The function returns Seating arrangements in form of
+	 *         String & Return the holdRefId after holding the seats
+	 * @throws Exception
+	 *             To check number of seats are always greater than 0
 	 */
 	@RequestMapping("/holdSeats/{nosOfSeats}")
-	public String holdSeats(@PathVariable("nosOfSeats") int nosOfSeats) throws Exception {
-		if(nosOfSeats > 0)
-			return seatService.holdSeatsForCustomer(nosOfSeats).toString();
-		else
-			throw new Exception("Number of Seats shoould be greater than 0");
+	public String holdSeats(@PathVariable("nosOfSeats") int nosOfSeats) {
+		try {
+			if (nosOfSeats > 0)
+				return seatService.holdSeatsForCustomer(nosOfSeats).toString();
+			else
+				throw new Exception("Number of Seats should be greater than 0");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Cannot Hold Seats at this time, please try again later");
+		}
+		return "Cannot Hold Seats at this time, please try again later";
+		
 	}
 
 }
