@@ -37,7 +37,7 @@ cd TicketBookingAlgoithm
 * Build the venue by providing number of rows and number of columns
 
   ```
-  POST http://localhost:8080/generate/10/10
+  GET http://localhost:8080/generate/10/10
   ```
   ![Image of buildVenue](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/buildVenue.PNG)
   
@@ -45,13 +45,13 @@ cd TicketBookingAlgoithm
   Seats can be held for max. 60 seconds. If the held seats expires, Customer has to re-send the request to hold seats.
 
   ```
-  POST http://localhost:8080/holdSeats/5
+  GET http://localhost:8080/holdSeats/5
   ```
   ![Image of HoldSeats](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/holdSeats.PNG)
   
 * Reserve and commit a specific group of held seats for a customer. Book the held seats based on holdRefId
   ```
-  POST http://localhost:8080/bookSeats/559d691d-a8c4-4b03-b58b-4dc03f1732ea
+  GET http://localhost:8080/bookSeats/559d691d-a8c4-4b03-b58b-4dc03f1732ea
   ```
   ![Image of BookSeast](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/bookSeats.PNG)
   
