@@ -106,7 +106,7 @@ public class SeatUtilityTest {
 	
 	@Test
 	public void showSeatTest(){
-		String expectedStr = "----------[[ STAGE ]]----------<br/>AAAAA<br/>AAAAA<br/>AAAAA<br/>AAAAA<br/>AAAAA<br/>";
+		String expectedStr = "----------[[ STAGE ]]----------\nAAAAA\nAAAAA\nAAAAA\nAAAAA\nAAAAA\n";
 		assertEquals(expectedStr, seatUtil.showSeats());
 	}
 	

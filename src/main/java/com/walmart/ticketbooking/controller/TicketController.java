@@ -34,7 +34,7 @@ public class TicketController {
 	public String bookSeats(@PathVariable("refId") String refId) {
 		boolean booked = seatService.bookSeatsForCustomer(refId);
 		if (booked) {
-			return seatService.showSeats() + "<br/> Seats successfully booked";
+			return seatService.showSeats() + "\n Seats successfully booked";
 		} else {
 			return "Either your booking has expired or the refId does not exist";
 		}
@@ -72,7 +72,7 @@ public class TicketController {
 	 */
 	@RequestMapping("/getAllSeats")
 	public String getAvailableSeats() {
-		return seatService.showSeats() + "<br/>" + seatService.getAvailableSeats();
+		return seatService.showSeats() + "\n" + seatService.getAvailableSeats();
 	}
 
 	/**

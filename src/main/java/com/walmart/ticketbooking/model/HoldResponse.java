@@ -41,6 +41,6 @@ public class HoldResponse {
 
 	@Override
 	public String toString() {
-		return venue + "<br/>" + ", refId=" + refId + "<br/>" + ", heldSeats=" + heldSeats;
+		return venue + "\n" + refId + "\n" + ", heldSeats=" + heldSeats;
 	}
 }

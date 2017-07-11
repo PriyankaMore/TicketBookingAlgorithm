@@ -230,11 +230,12 @@ public class SeatUtility {
 
 	public String showSeats() {
 
-		String display = "----------[[ STAGE ]]----------" + "<br/>";
+		String display = "----------[[ STAGE ]]----------" + "\n";
 		for (int i = 0; i < seatList.size(); i++) {
 			display = display + seatList.get(i).getStatus().getValue();
 			if ((i + 1) % columns == 0) {
-				display = display + "<br/>";
+				display = display + "\n";
+				//<br/>
 			}
 		}
 
