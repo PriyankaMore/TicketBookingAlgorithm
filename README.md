@@ -13,7 +13,15 @@ No Database is used, hence Collections work as repository for storing informatio
 * Users can hold/book any number of seats
 * Seats with lower number are best available seats
 * Hold time for seats is 60 seconds
-* Held seats expires automatically after 60 seconds without any notification to user and user has to resend hold request
+* Held seats expire automatically after 60 seconds without any notification to user and user has to resend hold request
+
+```
+Acronyms 
+A - Available Seats
+B - Booked Seats
+H - Seats on 60 sec hold
+
+```
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 ## Building the Executing the Project
@@ -31,7 +39,7 @@ cd TicketBookingAlgorithm
 ----------------------------------------------------------------------------------------------------------------------------------------
 ## RESTful web services
 
-* These rest services if tested through browser, then the image representation of seating arrangement can be seen 
+* These rest services if tested through curl on terminal window show the image representation of seating arrangement. 
 
 * Build the venue by providing number of rows and number of columns
 
@@ -40,7 +48,7 @@ cd TicketBookingAlgorithm
   ```
   ![Image of buildVenue](https://github.com/PriyankaMore/TicketBookingAlgorithm/blob/master/Image/buildVenue.PNG)
   
-* Find the best available seats and hold them on behalf of customer. The service takes input a number of seats to be booked.
+* Find the best available seats and hold them on behalf of customer. The service requires number of seats as an input parameter.
   Seats can be held for max. 60 seconds. If the held seats expires, Customer has to re-send the request to hold seats.
 
   ```
