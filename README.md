@@ -20,7 +20,7 @@ No Database is used, hence Collections work as repository for storing informatio
 * Make sure no application is running on port 8080
 ```
 git clone https://github.com/PriyankaMore/TicketBookingAlgorithm.git
-cd TicketBookingAlgoithm
+cd TicketBookingAlgorithm
 ./run_ticket_booking.sh
 ```
 * In case the script errors out, please execute each step in the script manually
